@@ -10,6 +10,7 @@ body {
 .hotels-body {
     margin: auto;
     max-width: 90%;
+    padding-bottom: 15px;
 }
 
 .hotel-item {
