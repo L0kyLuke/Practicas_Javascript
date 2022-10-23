@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas Hotel</title>
+    <link rel="stylesheet" href="app.css" />
+</head>
+
+<body>
+    <div class="contenedor">
+        <div>
+            <h1>Reserva</h1>
+        </div>
+        <div class="mini1">
+            <label>Categoría de habitación</label>
+        </div>
+        <div class="mini2">
+            <select  id="tipoHab">
+                <option value=100>Standard</option>
+                <option value=120>Junior Suite</option>
+                <option value=150>Suite</option>
+            </select>
+        </div>
+        <div id="check">
+            <input type="checkbox" id="spa">SPA
+        </div>
+        <div class="mini1">
+            <label>Tamaño de habitación</label>
+        </div>
+        <div class="mini2">
+            <select id="sizeHab">
+                <option value="ind">Individual</option>
+                <option value="dob">Doble</option>
+                <option value="tri">Triple</option>
+            </select>
+        </div>
+        <div>
+            <div class="mini1" id="noches">
+                <label>Número de noches</label>
+            </div>
+            <div class="mini2">
+                <input type="number" min="1" id="numNoch" value="1">
+            </div>
+        </div>
+        <div class="mini1" id="parking">
+            <label>Noches de parking</label>
+        </div>
+        <div class="mini2">
+            <input type="number" min="0" id="numPark" value="0">
+        </div>
+        <div>
+            <button id="calcula">Calcular</button>
+        </div>
+        <div>
+            <h2 id="resultado"></h2>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
