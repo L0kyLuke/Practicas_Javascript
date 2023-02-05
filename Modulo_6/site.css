@@ -1,0 +1,121 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#tabla{
+    margin-left: 120px;
+}
+
+td{
+    vertical-align:top;
+}
+
+h1{
+    padding-left: 25px;
+}
+
+
+.product-unit {
+    width: 50px;
+    height: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    text-align: center;
+    display: block;
+
+}
+
+#lista-elementos {
+    text-align: right;
+    width: 270px;
+
+}
+
+ol{
+    margin-top: 0px;
+    
+}
+
+li{
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    height: 24px;
+
+}
+
+.prods{
+    list-style-type: none;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    height: 24px;
+}
+
+#campos{
+    width: 30px;
+}
+
+  #total{
+    text-align: right;
+    padding-right: 20px;
+    width: 165px;
+  }
+
+  #resultado{
+    text-align: right;
+  }
+
+
+
+.button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 400px;
+    box-shadow: 0 9px #999;
+  }
+
+  .button[disabled] {
+    background-color: #a7a7a7; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 400px;
+    box-shadow: 0 9px #999;
+  }
+
+
+  .button:enabled:hover {
+    background-color:  #337e35; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 400px;
+    box-shadow: 0 9px #999;
+  }  
+
+  .button:enabled:active {
+    background-color:  #337e35; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 400px;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }  
