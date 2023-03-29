@@ -1,5 +1,5 @@
-var plainAlphabet = "abcdefghijklmnopqrstuvwxyz:()!¡,'";
-var encryptedAlphabet = "qw,ert(yuio'pa:sdfg!hjklz¡xcv)bnm";
+var plainAlphabet = "abcdefghijklmnopqrstuvwxyz:()!¡,'.";
+var encryptedAlphabet = "qw,ert(yuio'pa:sdfg!hjklz¡xcv)bnm%";
 
 var texto1 = function () {
   return document.getElementById("texto1").value;
