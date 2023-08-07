@@ -2,12 +2,12 @@ import * as DataBusiness from "./data-business.js";
 import * as Utils from "./utils.js";
 
 
-DataBusiness.getData().then(characters => {
+DataBusiness.getData().then(response => {
     document.getElementById("root").innerText = "";
 
     const nodes = [];
-
-    for (let character of Object.values(characters)) {
+    const characters = response.results;
+    for (let character of characters) {
         const node = Utils.createCharacterRow(character);
         
         node.onclick = function () {
