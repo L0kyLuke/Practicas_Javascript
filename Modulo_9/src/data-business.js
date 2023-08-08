@@ -15,4 +15,12 @@ var getDataByID = () => {
     });
 };
 
-export {getData, getDataByID};
+var getLocations = () => {
+    return fetch("https://rickandmortyapi.com/api/location")
+        .then(response => {
+        var data = response.json();
+        return data;
+    });
+};
+
+export {getData, getDataByID,getLocations};

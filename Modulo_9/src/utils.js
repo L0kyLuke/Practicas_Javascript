@@ -11,6 +11,18 @@ const createCharacterRow = (character) => {
   
     return element;
   };
+
+  const createLocationRow = (character) => {
+    const element = document.createElement("li");
+  
+  
+    const list = createRowText(character);
+    element.appendChild(list);
+  
+    element.className = "character-row";
+  
+    return element;
+  };
   
   const createAvatar = (character) => {
     const element = document.createElement("img");
@@ -43,8 +55,7 @@ const createCharacterRow = (character) => {
     characterDetail.innerHTML = "";
     characterDetail.appendChild(createAvatarDetail(character));
     characterDetail.appendChild(createParagraph("Name: " + character.name));
-    characterDetail.appendChild(createParagraph("Status: " + character.status));
-    characterDetail.appendChild(createParagraph("Species: " + character.species));
+
   };
   
   const createParagraph = (text) => {
@@ -53,4 +64,4 @@ const createCharacterRow = (character) => {
     return element;
   };
   
-  export { createCharacterRow, showCharacter };
+  export { createCharacterRow, createLocationRow, showCharacter };

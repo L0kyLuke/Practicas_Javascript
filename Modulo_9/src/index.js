@@ -21,3 +21,18 @@ DataBusiness.getData().then(response => {
         document.getElementById("root").append(node);
     }
 })
+
+DataBusiness.getLocations().then(response => {
+    document.getElementById("root2").innerText = "";
+    const nodes = [];
+    const characters= response.results;
+    console.log(characters)
+    for (let character of characters) {
+        const node = Utils.createLocationRow(character);
+        nodes.push(node);
+    }
+
+    for (let node of nodes) {
+        document.getElementById("root2").append(node);
+    }
+})
