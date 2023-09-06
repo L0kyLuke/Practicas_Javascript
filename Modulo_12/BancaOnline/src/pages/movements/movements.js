@@ -21,22 +21,28 @@ const params = history.getParams();
 const giveMeDetailsAccount = Boolean(params.id);
 
 if (giveMeDetailsAccount) {
+
   getAccount(params.id).then((apiAccount) => {
     account = mapAccountApiToVm(apiAccount);
     onSetValues(account);
   });
+
+  getMovements().then((movements) => {
+    const vmMovements = mapMovementsApiToVm(movements, params.id);
+    if (params.id === undefined) {
+      addMovementRows(movements);
+    } else {
+      const myMovements = (vmMovements) =>
+        vmMovements.filter((mymoves) => mymoves !== undefined);
+      addMovementRows(myMovements(vmMovements));
+    }
+  });
 } else {
-  account = mapEmptyAccountVmToApi(account);
-  onSetValues(account);
+  getMovements().then((movements) => {
+    
+    addMovementRows(movements);
+ 
+  });
 }
 
-getMovements().then((movements) => {
-  const vmMovements = mapMovementsApiToVm(movements, params.id);
-  if (params.id === undefined) {
-    addMovementRows(movements);
-  } else {
-    const myMovements = (vmMovements) =>
-      vmMovements.filter((mymoves) => mymoves !== undefined);
-    addMovementRows(myMovements(vmMovements));
-  }
-});
+
