@@ -1,5 +1,26 @@
 import Axios from 'axios';
 
-const url = `${process.env.BASE_API_URL}/movements`;
+const url = `${process.env.BASE_API_URL}`;
 
-export const getMovements = () => Axios.get(url).then(({ data }) => data);
+const endPoint = {
+    movements: "/movements",
+    account: "/account"
+};
+
+
+export const api = {
+    getMovements: (accountId) =>
+    Axios.get(`${url}${endPoint.movements}`).then((result) => {
+        return result.data.filter((movement) => movement.accountId === accountId);
+    }),
+
+    getAllMovements: () =>
+    Axios.get(`${url}${endPoint.movements}`).then((result) => {
+        return result.data;
+    }),
+
+    getAccount: (id) =>
+    Axios.get(`${url}${endPoint.account}/${id}`).then(result => {
+      return result.data;
+    }),
+  };

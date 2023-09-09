@@ -1,26 +1,19 @@
-export const mapMovementsApiToVm = (movements, accountId) =>
-  Array.isArray(movements)
-    ? movements.map((moves) => {
-        if (moves.accountId == accountId) {
-          return movementsApiToVm(moves);
-        }
-      })
-    : [];
+export const mappers = {
+  accountFromApiToVm: (account) => {
+    return (account = {
+      ...account,
+      alias: account.name,
+      balance: `${account.balance} €`,
+    });
+  },
 
-const movementsApiToVm = (moves) => {
-  return {
-    ...moves,
-    transaction: new Date(moves.transaction).toLocaleDateString(),
-    realTransaction: new Date(moves.realTransaction).toLocaleDateString(),
-    amount: `${moves.amount} €`,
-    balance: `${moves.balance} €`,
-  };
-};
-
-export const mapEmptyAccountVmToApi = (account) => {
-  return {
-    ...account,
-    alias: 'Total',
-    iban: 'Todas las cuentas',
-  };
+  movementsFromApiToVm: (movementList) => {
+    return movementList.map((movement) => ({
+      ...movement,
+      amount: `${movement.amount} €`,
+      balance: `${movement.balance} €`,
+      transaction: new Date(movement.transaction).toLocaleDateString(),
+      realTransaction: new Date(movement.realTransaction).toLocaleDateString(),
+    }));
+  },
 };

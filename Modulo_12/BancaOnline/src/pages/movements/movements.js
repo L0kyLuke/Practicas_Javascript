@@ -1,48 +1,32 @@
-import { getAccount } from '../account/account.api';
+import { history } from '../../core/router';
+import { api } from './movements.api';
+import { mappers } from './movements.mappers';
+import { addMovementRows } from './movements.helpers';
 import { onSetValues } from '../../common/helpers';
 
-import { addMovementRows } from './movements.helpers';
-import { getMovements } from './movements.api';
-import {
-  mapMovementsApiToVm,
-  mapEmptyAccountVmToApi,
-} from './movements.mappers';
-import { history } from '../../core/router';
-import { mapAccountApiToVm } from '../account/account.mappers';
-
-// Seleccionamos el id para cada una de las cuentas y obtenemos su url
 let account = {
-  id: '',
-  type: '',
+  iban: '',
   alias: '',
+  balance: '',
 };
 
+
 const params = history.getParams();
+
+
 const giveMeDetailsAccount = Boolean(params.id);
-
 if (giveMeDetailsAccount) {
-
-  getAccount(params.id).then((apiAccount) => {
-    account = mapAccountApiToVm(apiAccount);
-    onSetValues(account);
+  api.getAccount(params.id).then((result) => {
+    console.log(result);
+    onSetValues(mappers.accountFromApiToVm(result));
   });
-
-  getMovements().then((movements) => {
-    const vmMovements = mapMovementsApiToVm(movements, params.id);
-    if (params.id === undefined) {
-      addMovementRows(movements);
-    } else {
-      const myMovements = (vmMovements) =>
-        vmMovements.filter((mymoves) => mymoves !== undefined);
-      addMovementRows(myMovements(vmMovements));
-    }
-  });
-} else {
-  getMovements().then((movements) => {
-    
-    addMovementRows(movements);
- 
+}else{
+  api.getAllMovements().then((result) => {
+    addMovementRows(mappers.movementsFromApiToVm(result));
   });
 }
 
 
+api.getMovements(params.id).then((result) => {
+  addMovementRows(mappers.movementsFromApiToVm(result));
+});
